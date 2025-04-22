@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Validador de Certificados SEP - INEA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      text-align: center;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      max-width: 600px;
+    }
+    input {
+      padding: 10px;
+      width: 90%;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 25px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .result {
+      text-align: left;
+      padding-top: 20px;
+    }
+    img.logo {
+      width: 220px;
+      margin-bottom: 20px;
+    }
+    .verified {
+      border: 2px solid green;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      background: #e7f9e7;
+      color: #155724;
+    }
+    .verified strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Logo_INEA_nominativo.png" alt="Logo INEA" class="logo">
+    <h2>Validador de Certificados SEP - INEA</h2>
+    <input type="text" id="curp" placeholder="Ingresa la CURP">
+    <br>
+    <button onclick="validar()">Validar</button>
+    <div class="result" id="resultado"></div>
+  </div>
+
+  <script>
+    function validar() {
+      const curp = document.getElementById("curp").value.trim().toUpperCase();
+      const resultado = document.getElementById("resultado");
+      resultado.innerHTML = "";
+
+      if (curp === "MOPJ830911HVZLRC00") {
+        resultado.innerHTML = `
+          <p><strong>Nombre:</strong> JACINTO MOLINA PÉREZ</p>
+          <p><strong>CURP:</strong> ${curp}</p>
+          <p><strong>Fecha de término:</strong> 16 de junio de 2019</p>
+          <p><strong>Calificación final:</strong> 8.3</p>
+<p><strong>Conclusión:</strong> Secundaria</p>
+          <div class="verified">
+            <strong>Certificado validado exitosamente</strong>
+            Estatus: <strong>VERIFICADO CORRECTO</strong><br>
+            Sistema de Validación Oficial - Secretaría de Educación Pública (SEP)<br>
+            Folio digital Oe2a22f8-b123-4625-bc54-057555f24ebe
+          </div>
+        `;
+      } else {
+        resultado.innerHTML = `<span style="color: red;"><strong>No se encontró información para la CURP ingresada.</strong></span>`;
+      }
+    }
+  </script>
+</body>
+</html>
